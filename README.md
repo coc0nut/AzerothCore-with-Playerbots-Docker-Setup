@@ -1,6 +1,6 @@
 # AzerothCore with Playerbots Docker setup (installscript)
 
-Script installing AzerothCore with Playerbots
+Script installing AzerothCore with Playerbots, mod-aoe-loot and mod-learn-spells
 
 Includes:
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
