@@ -27,8 +27,10 @@ Steps:
    ```
 
 6. Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
-```console
+```bash
 docker attach ac-worldserver # to attach to the server console
+````
+```
 AC> account create username password
 AC> account set gmlevel username 3 -1
 ```
