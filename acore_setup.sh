@@ -48,4 +48,4 @@ tree $destination_dir
 sed -i '52i\      - ./modules:/azerothcore/modules' docker-compose.yml
 sed -i '91i\      - ./modules:/azerothcore/modules' docker-compose.yml
 
-docker compose -d --build
+docker compose up -d --build
