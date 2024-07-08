@@ -18,24 +18,37 @@ if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want
     cd ..
 
 else
-
-    cp src/.env azerothcore-wotlk/
-    cp src/*.yml azerothcore-wotlk/
-    cd azerothcore-wotlk
-
+    if [ -d "azerothcore-wotlk" ]; then
+        cp src/.env azerothcore-wotlk/
+        cp src/*.yml azerothcore-wotlk/
+        cd azerothcore-wotlk
+    else
+        echo "You need to install AzerothCore! Aborting..."
+        exit 1
+    fi
 fi
 
 if ask_user "Install modules?"; then
 
     cd modules
 
-    if ask_user "Install mod-aoe-loot?"; then
-        git clone https://github.com/azerothcore/mod-aoe-loot.git
-    fi
+    install_mod() {
+    local mod_name=$1
+    local repo_url=$2
 
-    if ask_user "Install mod-learn-spells?"; then
-        git clone https://github.com/azerothcore/mod-learn-spells.git
+    if [ -d "${mod_name}" ]; then
+        echo "${mod_name} exists. Skipping..."
+    else
+        if ask_user "Install ${mod_name}?"; then
+            git clone "${repo_url}"
+        fi
     fi
+    }
+
+    install_mod "mod-aoe-loot" "https://github.com/azerothcore/mod-aoe-loot.git"
+    install_mod "mod-learn-spells" "https://github.com/azerothcore/mod-learn-spells.git"
+    install_mod "mod-premium" "https://github.com/azerothcore/mod-premium.git"
+    install_mod "mod-fireworks-on-level" "https://github.com/azerothcore/mod-fireworks-on-level.git"
 
     cd ..
 
@@ -47,10 +60,6 @@ destination_dir="data/sql/custom"
 world=$destination_dir"/db_world/"
 chars=$destination_dir"/db_characters/"
 auth=$destination_dir"/db_auth/"
-
-rm -rf $world/*.sql
-rm -rf $chars/*.sql
-rm -rf $auth/*.sql
 
 sql_dirs=$(find $base_dir -type f -name "*.sql" -exec dirname {} \; | sort -u)
 
@@ -74,3 +83,6 @@ echo "$sql_dirs" | while read -r dir; do
 done
 
 docker compose up -d --build
+
+
+exit 0
