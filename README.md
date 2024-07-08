@@ -39,6 +39,6 @@ In a query window, copy
 ```sql
 USE acore_auth;
 SELECT * FROM realmlist;
-UPDATE realmlist SET address='$your_desired_ip';
+UPDATE realmlist SET address='your_desired_ip';
 ```
 and run it...
