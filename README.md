@@ -33,13 +33,12 @@ AC> account create username password
 AC> account set gmlevel username 3 -1
 ```
 Then log into the database with HeidiSQL:
-In a query window, copy
+In a query window, run the following sql:
 ```sql
 USE acore_auth;
 SELECT * FROM realmlist;
 UPDATE realmlist SET address='your_desired_ip';
 ```
-and run it...
 
 To reinstall, run `./reinstall.sh`
 To uninstall, run `./uninstall.sh`
