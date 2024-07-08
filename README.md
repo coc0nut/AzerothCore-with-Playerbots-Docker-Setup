@@ -1,4 +1,4 @@
-# AzerothCore <img align="right" src="https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png">
+# AzerothCore <img align="left" src="https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png">
 
 
 
