@@ -18,6 +18,8 @@ if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want
 
     cd ..
     
+else
+    cd azerothcore-wotlk
 fi
 
 if ask_user "Install modules?"; then
