@@ -41,4 +41,5 @@ UPDATE realmlist SET address='your_desired_ip';
 ```
 
 To reinstall, run `./reinstall.sh`
+
 To uninstall, run `./uninstall.sh`
