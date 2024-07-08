@@ -2,3 +2,7 @@ services:
   ac-db-import:
     volumes:
       - ./modules:/azerothcore/modules
+
+  ac-worldserver:
+    volumes:
+      - ./modules:/azerothcore/modules
