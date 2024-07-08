@@ -5,10 +5,11 @@ Prerequisits:
   1. Debian 12/Ubuntu with Docker installed.
 
 Steps:
-1. `git clone https://github.com/coc0nut/AzerothCore.git`
+1. Edit acore_setup/realmlist.sql and insert your own local ip (or public if you like) for the AzerothCore server. 
 
-2. `cd AzerothCore && ./acore_setup.sh`
+2. `git clone https://github.com/coc0nut/AzerothCore.git`
 
-3. `docker attach ac-worldserver`
-3.1. `account create <your username> <your password>`
-3.2. `account set gmlevel <your username> 3 -1` (optional)
+3. `cd AzerothCore && ./acore_setup.sh`
+
+4. `Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)` 
+
