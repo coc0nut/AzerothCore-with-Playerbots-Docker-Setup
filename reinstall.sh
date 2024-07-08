@@ -80,8 +80,6 @@ else
         echo "Skipping sql copy..."
 fi
 
-tree $destination_dir
-
 if ask_user "Rebuild?"; then
         docker compose up -d --build && docker attach ac-worldserver
 else
