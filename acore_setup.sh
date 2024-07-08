@@ -35,9 +35,6 @@ if ask_user "Install modules?"; then
     fi
 
     cd ..
-    
-else
-    cd azerothcore-wotlk
 fi
 
 
