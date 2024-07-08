@@ -4,6 +4,8 @@ Scripts installing azerothcore with playerbots
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
 
+---
+
 Steps:
 1. Edit acore_setup/realmlist.sql and insert your own local ip (or public if you like) for the AzerothCore server. 
 
