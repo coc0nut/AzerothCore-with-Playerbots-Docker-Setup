@@ -9,20 +9,20 @@ ask_user() {
 }
 
 git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
+cd azerothcore-wotlk/modules
 
-if ask_user "Install modules?"; then
-    cd azerothcore-wotlk/modules
-
-    git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
+git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
+if ask_user "Install mod-aoe-loot?"; then
     git clone https://github.com/azerothcore/mod-aoe-loot.git
+fi    
+if ask_user "Install mod-learn-spells?"; then
     git clone https://github.com/azerothcore/mod-learn-spells.git
-    git clone https://github.com/noisiver/mod-junk-to-gold.git
-
-    cd ..
-else
-    echo "Skipping modules..."
-    cd azerothcore-wotlk
 fi
+if ask_user "Install mod-junk-to-gold?"; then
+    git clone https://github.com/noisiver/mod-junk-to-gold.git
+fi
+
+cd ..
 
 base_dir="modules"
 destination_dir="data/sql/custom"
