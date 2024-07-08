@@ -20,7 +20,7 @@ Steps:
 
 1. ```bash
    git clone https://github.com/coc0nut/AzerothCore.git \
-   && cd AzerothCore && chmod +x acore_setup.sh && ./acore_setup.sh
+   && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
    ```
 
 2. Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
@@ -39,3 +39,6 @@ SELECT * FROM realmlist;
 UPDATE realmlist SET address='your_desired_ip';
 ```
 and run it...
+
+To reinstall, run `./reinstall.sh`
+To uninstall, run `./uninstall.sh`
