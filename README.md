@@ -7,6 +7,8 @@
 Script installing AzerothCore with Playerbots
 
 Includes:
+- [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
+- [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
 - [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
 - [mod-junk-to-gold](https://github.com/noisiver/mod-junk-to-gold.git)
