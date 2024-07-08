@@ -1,19 +1,22 @@
-# AzerothCore
+#![AzerothCore](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
 Script installing azerothcore with playerbots
+Includes:
+- [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
+- [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
+- [mod-junk-to-gold](https://github.com/noisiver/mod-junk-to-gold.git)
 
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
 
----
+--
 
 Steps:
-1. Edit acore_setup/realmlist.sql and insert your own local ip (or public if you like) for the AzerothCore server. 
 
-2. ```bash
+1. ```bash
    git clone https://github.com/coc0nut/AzerothCore.git
    ```
 
-4. ```bash
+2. ```bash
    cd AzerothCore && chmod +x acore_setup.sh && ./acore_setup.sh
    ```
 
