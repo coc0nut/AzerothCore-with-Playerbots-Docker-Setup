@@ -8,21 +8,39 @@ ask_user() {
     esac
 }
 
-git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
-cd azerothcore-wotlk/modules
+if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want to install modules.)"; then
+    
+    git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
+    
+    cd azerothcore-wotlk/modules
+    
+    git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
 
-git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
-if ask_user "Install mod-aoe-loot?"; then
-    git clone https://github.com/azerothcore/mod-aoe-loot.git
-fi    
-if ask_user "Install mod-learn-spells?"; then
-    git clone https://github.com/azerothcore/mod-learn-spells.git
-fi
-if ask_user "Install mod-junk-to-gold?"; then
-    git clone https://github.com/noisiver/mod-junk-to-gold.git
+    cd ..
+    
 fi
 
-cd ..
+if ask_user "Install modules?"; then
+    
+    cd azerothcore-wotlk/modules
+    
+    if ask_user "Install mod-aoe-loot?"; then
+        git clone https://github.com/azerothcore/mod-aoe-loot.git
+    fi
+    
+    if ask_user "Install mod-learn-spells?"; then
+        git clone https://github.com/azerothcore/mod-learn-spells.git
+    fi
+    
+    if ask_user "Install mod-junk-to-gold?"; then
+        git clone https://github.com/noisiver/mod-junk-to-gold.git
+    fi
+
+    cd ..
+else
+    cd azerothcore-wotlk
+fi
+
 
 base_dir="modules"
 destination_dir="data/sql/custom"
@@ -56,7 +74,16 @@ echo "$sql_dirs" | while read -r dir; do
     fi
 done
 
-sed -i '52i\      - ./modules:/azerothcore/modules' docker-compose.yml
-sed -i '91i\      - ./modules:/azerothcore/modules' docker-compose.yml
+if sed -n '52p' docker-compose.yml | grep -q "\- ./modules:/azerothcore/modules"; then
+    echo "Line 52 contains the string '- ./modules:/azerothcore/modules'."
+else
+    sed -i '52i\      - ./modules:/azerothcore/modules' docker-compose.yml
+fi
+
+if sed -n '91p' docker-compose.yml | grep -q "\- ./modules:/azerothcore/modules"; then
+    echo "Line 92 contains the string '- ./modules:/azerothcore/modules'."
+else
+    sed -i '92i\      - ./modules:/azerothcore/modules' docker-compose.yml
+fi
 
 docker compose up -d --build
