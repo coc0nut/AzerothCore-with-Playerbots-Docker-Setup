@@ -27,4 +27,16 @@ Steps:
    ```
 
 6. Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
-
+```console
+docker attach ac-worldserver # to attach to the server console
+AC> account create username password
+AC> account set gmlevel username 3 -1
+```
+Then log into the database with HeidiSQL:
+In a query window, copy
+```sql
+USE acore_auth;
+SELECT * FROM realmlist;
+UPDATE realmlist SET address='10.0.0.56';
+```
+and run it...
