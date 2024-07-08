@@ -1,4 +1,5 @@
-# AzerothCore ![AzerothCore](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) 
+<img align="right" width="100" height="100" src="https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png">
+# AzerothCore
 
 
 Script installing azerothcore with playerbots
