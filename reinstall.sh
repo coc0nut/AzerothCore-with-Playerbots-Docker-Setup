@@ -10,21 +10,21 @@ ask_user() {
     esac
 }
 
-if ask_user "Do you want to stop all azeroth core containers?"; then
+if ask_user "Stop all AzerothCore containers?"; then
 
         docker compose down
 else
         echo "Skipping compose down..."
 fi
 
-if ask_user "Do you want to system prune docker and delete everything that isnt running?"; then
+if ask_user "System prune docker and delete everything that isnt running?"; then
 
         docker system prune -a
 else
         echo "Skipping system prune..."
 fi
 
-if ask_user "Do you want to delete the azeroth core docker volumes?"; then
+if ask_user "Delete the AzerothCore docker volumes?"; then
         docker volume rm azerothcore-wotlk_ac-client-data
         docker volume rm azerothcore-wotlk_ac-database
 else
@@ -39,7 +39,7 @@ world=$destination_dir"/db_world/"
 chars=$destination_dir"/db_characters/"
 auth=$destination_dir"/db_auth/"
 
-if ask_user "Do you want to clear the data/sql/custom folders for sql files?"; then
+if ask_user "Clear the data/sql/custom folders for sql files?"; then
         # clear data/sql/custom/ folders
         rm -rf $world/*.sql
         rm -rf $chars/*.sql
@@ -48,7 +48,7 @@ else
         echo "Skipping clearing folder..."
 fi
 
-if ask_user "Do you want to find all sql files and put them in data/sql/custom folders?"; then
+if ask_user "Find all sql files in modules folders and put them in data/sql/custom folders?"; then
         # Find directories containing .sql files in the modules folder
         sql_dirs=$(find $base_dir -type f -name "*.sql" -exec dirname {} \; | sort -u)
 
@@ -82,7 +82,7 @@ fi
 
 tree $destination_dir
 
-if ask_user "Do you want to rebuild?"; then
+if ask_user "Rebuild?"; then
         docker compose up -d --build && docker attach ac-worldserver
 else
         echo "Skipping build..."
