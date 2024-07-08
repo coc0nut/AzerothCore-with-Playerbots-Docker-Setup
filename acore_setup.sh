@@ -21,6 +21,7 @@ if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want
     cd ..
     
 else
+    cp docker-compose.override.yml azerothcore-wotlk/
     cd azerothcore-wotlk
 fi
 
