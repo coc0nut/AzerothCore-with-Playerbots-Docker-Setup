@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd azerothcore-wotlk
+
 docker compose down
 
 docker system prune -a
