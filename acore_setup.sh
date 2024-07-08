@@ -73,16 +73,12 @@ echo "$sql_dirs" | while read -r dir; do
     fi
 done
 
-if sed -n '52p' docker-compose.yml | grep -q "\- ./modules:/azerothcore/modules"; then
-    echo "Line 52 contains the string '- ./modules:/azerothcore/modules'."
-else
+if ! sed -n '52p' docker-compose.yml | grep -q "\- ./modules:/azerothcore/modules"; then
     sed -i '52i\      - ./modules:/azerothcore/modules' docker-compose.yml
 fi
 
-if sed -n '91p' docker-compose.yml | grep -q "\- ./modules:/azerothcore/modules"; then
-    echo "Line 92 contains the string '- ./modules:/azerothcore/modules'."
-else
-    sed -i '92i\      - ./modules:/azerothcore/modules' docker-compose.yml
+if ! sed -n '91p' docker-compose.yml | grep -q "\- ./modules:/azerothcore/modules"; then
+    sed -i '92i\      - ./modules:/azerothcore/modules' docker-compose.yml    
 fi
 
 docker compose up -d --build
