@@ -31,12 +31,9 @@ if ask_user "Install modules?"; then
     if ask_user "Install mod-learn-spells?"; then
         git clone https://github.com/azerothcore/mod-learn-spells.git
     fi
-    
-    if ask_user "Install mod-junk-to-gold?"; then
-        git clone https://github.com/noisiver/mod-junk-to-gold.git
-    fi
 
     cd ..
+    
 else
     cd azerothcore-wotlk
 fi
