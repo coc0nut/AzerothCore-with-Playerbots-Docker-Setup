@@ -19,14 +19,11 @@ Prerequisits:
 Steps:
 
 1. ```bash
-   git clone https://github.com/coc0nut/AzerothCore.git
+   git clone https://github.com/coc0nut/AzerothCore.git \
+   && cd AzerothCore && chmod +x acore_setup.sh && ./acore_setup.sh
    ```
 
-2. ```bash
-   cd AzerothCore && chmod +x acore_setup.sh && ./acore_setup.sh
-   ```
-
-6. Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
+2. Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
 ```bash
 docker attach ac-worldserver # to attach to the server console
 ````
