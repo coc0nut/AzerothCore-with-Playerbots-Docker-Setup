@@ -1,8 +1,14 @@
 services:
+  ac-database:
+    environment:
+      TZ: ${TZ}
+
   ac-db-import:
     volumes:
       - ./modules:/azerothcore/modules
 
   ac-worldserver:
+    environment:
+      TZ: ${TZ}
     volumes:
       - ./modules:/azerothcore/modules

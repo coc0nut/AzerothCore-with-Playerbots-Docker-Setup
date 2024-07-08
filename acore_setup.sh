@@ -9,37 +9,37 @@ ask_user() {
 }
 
 if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want to install modules.)"; then
-    
+
     git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
-
-    cp docker-compose.override.yml azerothcore-wotlk/
-    
+    cp src/.env azerothcore-wotlk/
+    cp src/*.yml azerothcore-wotlk/
     cd azerothcore-wotlk/modules
-    
     git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
-
     cd ..
-    
+
 else
-    cp docker-compose.override.yml azerothcore-wotlk/
+
+    cp src/.env azerothcore-wotlk/
+    cp src/*.yml azerothcore-wotlk/
     cd azerothcore-wotlk
+
 fi
 
 if ask_user "Install modules?"; then
-    
+
     cd modules
-    
+
     if ask_user "Install mod-aoe-loot?"; then
         git clone https://github.com/azerothcore/mod-aoe-loot.git
     fi
-    
+
     if ask_user "Install mod-learn-spells?"; then
         git clone https://github.com/azerothcore/mod-learn-spells.git
     fi
 
     cd ..
-fi
 
+fi
 
 base_dir="modules"
 destination_dir="data/sql/custom"
