@@ -1,5 +1,5 @@
 # AzerothCore
-Scripts installing azerothcore with playerbots
+Script installing azerothcore with playerbots
 
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
