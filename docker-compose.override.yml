@@ -1,0 +1,4 @@
+services:
+  ac-db-import:
+    volumes:
+      - ./modules:/azerothcore/modules
