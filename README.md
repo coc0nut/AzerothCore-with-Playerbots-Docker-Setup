@@ -34,10 +34,10 @@ In a query window, run the following sql:
 ```sql
 USE acore_auth;
 SELECT * FROM realmlist;
-UPDATE realmlist SET address='your_desired_ip';
+UPDATE realmlist SET address='dockerhost_ip';
 ```
 
 Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
-`set realmlist your_desired_ip`
+`set realmlist dockerhost_ip`
 
 To uninstall and start fresh, run `./acore_uninstall.sh`
