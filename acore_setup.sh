@@ -43,8 +43,6 @@ echo "$sql_dirs" | while read -r dir; do
     fi
 done
 
-tree $destination_dir
-
 sed -i '52i\      - ./modules:/azerothcore/modules' docker-compose.yml
 sed -i '91i\      - ./modules:/azerothcore/modules' docker-compose.yml
 
