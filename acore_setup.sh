@@ -12,7 +12,7 @@ if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want
     
     git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
 
-    mv docker-compose.override.yml azerothcore-wotlk/docker-compose.override.yml
+    cp docker-compose.override.yml azerothcore-wotlk/
     
     cd azerothcore-wotlk/modules
     
