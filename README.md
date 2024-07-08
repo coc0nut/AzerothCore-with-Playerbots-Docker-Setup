@@ -40,6 +40,6 @@ UPDATE realmlist SET address='dockerhost_ip';
 Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
 `set realmlist dockerhost_ip`
 
-**Change dockerhost_ip to the ip that the machine that runs the docker container has.**
+**Change dockerhost_ip to the ip that the machine that runs the docker containers has.**
 
 To uninstall and start fresh, run `./acore_uninstall.sh`
