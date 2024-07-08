@@ -1,7 +1,5 @@
 # AzerothCore with Playerbots Docker setup (installscript)
 
-
-
 Script installing AzerothCore with Playerbots
 
 Includes:
@@ -9,7 +7,6 @@ Includes:
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
 - [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
-- [mod-junk-to-gold](https://github.com/noisiver/mod-junk-to-gold.git)
 
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
