@@ -11,5 +11,5 @@ Steps:
 
 3. `cd AzerothCore && ./acore_setup.sh`
 
-4. `Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)` 
+4. Follow the steps "Creating an account" and "Access atabase and update realmlist" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
 
