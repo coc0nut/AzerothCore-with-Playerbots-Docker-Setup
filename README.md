@@ -4,7 +4,8 @@
 
 ---
 
-Script installing azerothcore with playerbots
+Script installing AzerothCore with Playerbots
+
 Includes:
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
 - [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
