@@ -73,12 +73,24 @@ echo "$sql_dirs" | while read -r dir; do
     second_last_dir=$(basename "$(dirname "$dir")")
 
     if [[ "$last_dir" == *"char"* ]] || ([[ "$last_dir" == *"base"* ]] && [[ "$second_last_dir" == *"char"* ]]); then
-            echo "Copying SQL files to $destination_dir/db_characters"
-            cp $dir/*.sql $chars
+        echo "Copying SQL files to $destination_dir/db_characters"
+        for file in $dir/*.sql; do
+            if [[ ! -f "$chars/$(basename "$file")" ]]; then
+                cp "$file" "$chars"
+            else
+                echo "File exists in $world, skipping $(basename "$file")"
+            fi
+        done
 
     elif [[ "$last_dir" == *"world"* ]] || ([[ "$last_dir" == *"base"* ]] && [[ "$second_last_dir" == *"world"* ]]); then
-            echo "Copying SQL files to $destination_dir/db_world"
-            cp $dir/*.sql $world
+        echo "Copying SQL files to $destination_dir/db_world"
+        for file in $dir/*.sql; do
+            if [[ ! -f "$world/$(basename "$file")" ]]; then
+                cp "$file" "$world"
+            else
+                echo "File exists in $world, skipping $(basename "$file")"
+            fi
+        done
     fi
 done
 
