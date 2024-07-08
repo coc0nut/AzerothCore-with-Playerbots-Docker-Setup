@@ -40,4 +40,4 @@ UPDATE realmlist SET address='your_desired_ip';
 Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
 `set realmlist your_desired_ip`
 
-To uninstall and start fresh, run `./uninstall.sh`
+To uninstall and start fresh, run `./acore_uninstall.sh`
