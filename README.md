@@ -1,4 +1,4 @@
-# AzerothCore with Playerbots <img align="left" src="https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png">
+# AzerothCore with Playerbots
 
 
 
