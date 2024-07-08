@@ -40,6 +40,8 @@ SELECT * FROM realmlist;
 UPDATE realmlist SET address='your_desired_ip';
 ```
 
+Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
+
 To reinstall, run `./reinstall.sh`
 
 To uninstall, run `./uninstall.sh`
