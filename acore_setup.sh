@@ -1,15 +1,28 @@
 #!/bin/bash
 
+ask_user() {
+    read -p "$1 (y/n): " choice
+    case "$choice" in
+        y|Y ) return 0;;
+        * ) return 1;;
+    esac
+}
+
 git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
 
-cd azerothcore-wotlk/modules
+if ask_user "Install modules?"; then
+    cd azerothcore-wotlk/modules
 
-git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
-git clone https://github.com/azerothcore/mod-aoe-loot.git
-git clone https://github.com/azerothcore/mod-learn-spells.git
-git clone https://github.com/noisiver/mod-junk-to-gold.git
+    git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
+    git clone https://github.com/azerothcore/mod-aoe-loot.git
+    git clone https://github.com/azerothcore/mod-learn-spells.git
+    git clone https://github.com/noisiver/mod-junk-to-gold.git
 
-cd ..
+    cd ..
+else
+    echo "Skipping modules..."
+    cd azerothcore-wotlk
+fi
 
 base_dir="modules"
 destination_dir="data/sql/custom"
