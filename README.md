@@ -2,6 +2,8 @@
 
 
 
+---
+
 Script installing azerothcore with playerbots
 Includes:
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
@@ -11,7 +13,7 @@ Includes:
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
 
---
+---
 
 Steps:
 
