@@ -22,7 +22,7 @@ fi
 
 if ask_user "Install modules?"; then
     
-    cd azerothcore-wotlk/modules
+    cd modules
     
     if ask_user "Install mod-aoe-loot?"; then
         git clone https://github.com/azerothcore/mod-aoe-loot.git
