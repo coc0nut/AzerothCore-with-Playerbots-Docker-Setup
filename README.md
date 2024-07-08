@@ -2,8 +2,6 @@
 
 
 
----
-
 Script installing AzerothCore with Playerbots
 
 Includes:
