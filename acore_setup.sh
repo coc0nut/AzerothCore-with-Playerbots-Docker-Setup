@@ -48,8 +48,4 @@ tree $destination_dir
 sed -i '52i\      - ./modules:/azerothcore/modules' docker-compose.yml
 sed -i '91i\      - ./modules:/azerothcore/modules' docker-compose.yml
 
-docker compose build
-
-docker exec -i ac-database mysql -u root -p password < acore_setup/realmlist.sql
-
-docker compose up -d
+docker compose -d --build
