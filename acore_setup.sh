@@ -11,6 +11,8 @@ ask_user() {
 if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want to install modules.)"; then
     
     git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
+
+    cp docker-compose.override.yml azerothcore-wotlk/
     
     cd azerothcore-wotlk/modules
     
