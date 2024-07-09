@@ -8,24 +8,26 @@ ask_user() {
     esac
 }
 
-if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want to install modules.)"; then
-
-    git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
+if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
-    cd azerothcore-wotlk/modules
-    git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
-    cd ..
-
+    cd azerothcore-wotlk
 else
-    if [ -d "azerothcore-wotlk" ]; then
+    if ask_user "Download and install AzerothCore Playerbots?"; then
+
+        git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
         cp src/.env azerothcore-wotlk/
         cp src/*.yml azerothcore-wotlk/
-        cd azerothcore-wotlk
+        cd azerothcore-wotlk/modules
+        git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
+        cd ..
     else
-        echo "You need to install AzerothCore! Aborting..."
-        exit 1
+        echo "Aborting..."
+        exit 1    
     fi
+
+    echo "You need to install AzerothCore! Aborting..."
+    exit 1
 fi
 
 if ask_user "Install modules?"; then
