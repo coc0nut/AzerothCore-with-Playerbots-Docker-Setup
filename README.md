@@ -15,14 +15,15 @@ Prerequisits:
 
 Steps:
 
-1. ```bash
-   git clone https://github.com/coc0nut/AzerothCore.git \
-   && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
-   ```
+1.
+ ```bash
+ git clone https://github.com/coc0nut/AzerothCore.git \
+ && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
+ ```
 
 2. Follow the steps "Creating an account" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
 ```bash
-docker attach ac-worldserver # to attach to the server console
+docker attach ac-worldserver
 ```
 3.
 ```shell
@@ -30,7 +31,8 @@ AC> account create username password
 AC> account set gmlevel username 3 -1
 ```
 
-4. Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
+4.
+Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
 `set realmlist dockerhost_ip`
 
 **Change dockerhost_ip to the ip that the machine that runs the docker containers has.**
