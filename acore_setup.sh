@@ -8,23 +8,21 @@ ask_user() {
     esac
 }
 
-if ask_user "Download and install AzerothCore Playerbots? (Skip if you only want to install modules.)"; then
-
-    git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
+if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
-    cd azerothcore-wotlk/modules
-    git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
-    cd ..
-
+    cd azerothcore-wotlk
 else
-    if [ -d "azerothcore-wotlk" ]; then
+    if ask_user "Download and install AzerothCore Playerbots?"; then
+        git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
         cp src/.env azerothcore-wotlk/
         cp src/*.yml azerothcore-wotlk/
-        cd azerothcore-wotlk
+        cd azerothcore-wotlk/modules
+        git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
+        cd ..
     else
-        echo "You need to install AzerothCore! Aborting..."
-        exit 1
+        echo "Aborting..."
+        exit 1    
     fi
 fi
 
@@ -96,5 +94,56 @@ done
 
 docker compose up -d --build
 
+cd ..
+
+# Directory for custom SQL files
+custom_sql_dir="src/sql"
+auth="acore_auth"
+world="acore_world"
+chars="acore_characters"
+
+ip_address=$(hostname -I | awk '{print $1}')
+
+# Temporary SQL file
+temp_sql_file="/tmp/temp_custom_sql.sql"
+
+# Function to execute SQL files with IP replacement
+execute_sql() {
+    local db_name=$1
+    local sql_files=("$custom_sql_dir/$db_name"/*.sql)
+
+    if [ -e "${sql_files[0]}" ]; then
+        for custom_sql_file in "${sql_files[@]}"; do
+            echo "Executing $custom_sql_file"
+            temp_sql_file=$(mktemp)
+            if [[ "$(basename "$custom_sql_file")" == "update_realmlist.sql" ]]; then
+                sed -e "s/{{IP_ADDRESS}}/$ip_address/g" "$custom_sql_file" > "$temp_sql_file"
+            else
+                cp "$custom_sql_file" "$temp_sql_file"
+            fi
+            mysql -h "$ip_address" -uroot -ppassword "$db_name" < "$temp_sql_file"
+        done
+    else
+        echo "No SQL files found in $custom_sql_dir/$db_name, skipping..."
+    fi
+}
+
+# Run custom SQL files
+echo "Running custom SQL files..."
+execute_sql "$auth"
+execute_sql "$world"
+execute_sql "$chars"
+
+# Clean up temporary file
+rm "$temp_sql_file"
+
+echo ""
+echo "NOTE:"
+echo ""
+echo "1. Execute 'docker attach ac-worldserver'"
+echo "2. 'account create username password' creates an account."
+echo "3. 'account set gmlevel username 3 -1' sets the account as gm for all servers."
+echo "4. Ctrl+p Ctrl+q will take you out of the world console."
+echo "5. Now login to wow on $ip_address with 3.3.5a client!"
 
 exit 0
