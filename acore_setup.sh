@@ -96,5 +96,50 @@ done
 
 docker compose up -d --build
 
+cd ..
+
+# Directory for custom SQL files
+custom_sql_dir="src/sql"
+auth="acore_auth"
+world="acore_world"
+chars="acore_characters"
+
+ip_address=$(hostname -I | awk '{print $1}')
+
+# Temporary SQL file
+temp_sql_file="/tmp/temp_custom_sql.sql"
+
+# Function to execute SQL files with IP replacement
+execute_sql() {
+    local db_name=$1
+    local sql_files=("$custom_sql_dir/$db_name"/*.sql)
+
+    if [ -e "${sql_files[0]}" ]; then
+        for custom_sql_file in "${sql_files[@]}"; do
+            echo "Executing $custom_sql_file"
+            temp_sql_file=$(mktemp)
+            if [[ "$(basename "$custom_sql_file")" == "update_realmlist.sql" ]]; then
+                sed -e "s/{{IP_ADDRESS}}/$ip_address/g" "$custom_sql_file" > "$temp_sql_file"
+            else
+                cp "$custom_sql_file" "$temp_sql_file"
+            fi
+            mysql -h "$ip_address" -uroot -ppassword "$db_name" < "$temp_sql_file"
+        done
+    else
+        echo "No SQL files found in $custom_sql_dir/$db_name, skipping..."
+    fi
+}
+
+# Run custom SQL files
+echo "Running custom SQL files..."
+execute_sql "$auth"
+execute_sql "$world"
+execute_sql "$chars"
+
+# Clean up temporary file
+rm "$temp_sql_file"
+
+docker attach ac-worldserver
+
 
 exit 0
