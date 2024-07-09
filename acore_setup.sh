@@ -25,9 +25,6 @@ else
         echo "Aborting..."
         exit 1    
     fi
-
-    echo "You need to install AzerothCore! Aborting..."
-    exit 1
 fi
 
 if ask_user "Install modules?"; then
