@@ -40,4 +40,5 @@ Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address y
 `hostname -I | awk '{print $1}` will give you the ip address...
 
 To uninstall and start fresh, run `./acore_uninstall.sh`
+
 To clear the data/sql/custom folders run `./acore_clear_sql.sh`
