@@ -23,8 +23,9 @@ Steps:
 2. Follow the steps "Creating an account" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
 ```bash
 docker attach ac-worldserver # to attach to the server console
-````
 ```
+3.
+```shell
 AC> account create username password
 AC> account set gmlevel username 3 -1
 ```
