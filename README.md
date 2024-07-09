@@ -34,7 +34,7 @@ NOTE:
 2. 'account create username password' creates an account.
 3. 'account set gmlevel username 3 -1' sets the account as gm for all servers.
 4. Ctrl+p Ctrl+q will take you out of the world console.
-5. Now login to wow on 10.0.0.32 with 3.3.5a client!
+5. Now login to wow on $(hostname -I | awk '{print $1}') with 3.3.5a client!
 ```
 See [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker) for more info.
 
@@ -50,7 +50,7 @@ Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address y
 
 **Change dockerhost_ip to the ip that the machine that runs the docker containers has.**
 
-`hostname -I | awk '{print $1}` will give you the ip address...
+`hostname -I | awk '{print $1}'` will give you the ip address...
 
 To uninstall and start fresh, run `./acore_uninstall.sh`
 
