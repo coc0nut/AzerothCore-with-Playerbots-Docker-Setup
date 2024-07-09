@@ -13,6 +13,9 @@ Includes:
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
 
+Reference:
+[Azeroth Core](https://www.azerothcore.org/wiki/home)
+
 ---
 
 Steps:
@@ -23,10 +26,18 @@ Steps:
  && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
  ```
 
-2. Follow the steps "Creating an account" on [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker)
-```bash
-docker attach ac-worldserver
+2. 
 ```
+NOTE:
+
+1. Execute 'docker attach ac-worldserver'
+2. 'account create username password' creates an account.
+3. 'account set gmlevel username 3 -1' sets the account as gm for all servers.
+4. Ctrl+p Ctrl+q will take you out of the world console.
+5. Now login to wow on 10.0.0.32 with 3.3.5a client!
+```
+See [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker) for more info.
+
 3.
 ```shell
 AC> account create username password
