@@ -14,7 +14,6 @@ if [ -d "azerothcore-wotlk" ]; then
     cd azerothcore-wotlk
 else
     if ask_user "Download and install AzerothCore Playerbots?"; then
-
         git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
         cp src/.env azerothcore-wotlk/
         cp src/*.yml azerothcore-wotlk/
@@ -138,7 +137,13 @@ execute_sql "$chars"
 # Clean up temporary file
 rm "$temp_sql_file"
 
-docker attach ac-worldserver
-
+echo ""
+echo "NOTE:"
+echo ""
+echo "1. Execute 'docker attach ac-worldserver'"
+echo "2. 'account create username password' creates an account."
+echo "3. 'account set gmlevel username 3 -1' sets the account as gm for all servers."
+echo "4. Ctrl+p Ctrl+q will take you out of the world console."
+echo "5. Now login to wow with 3.3.5a client!"
 
 exit 0
