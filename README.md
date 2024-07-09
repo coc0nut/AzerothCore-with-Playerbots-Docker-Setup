@@ -1,12 +1,14 @@
 # AzerothCore with Playerbots Docker setup (installscript)
 
-Script installing AzerothCore with Playerbots, mod-aoe-loot and mod-learn-spells on Docker
+Script installing AzerothCore with Playerbots on Docker
 
 Includes:
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
 - [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
+- [mod-premium](https://github.com/azerothcore/mod-premium.git)
+- [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git)
 
 Prerequisits: 
   1. Debian 12/Ubuntu with Docker installed.
