@@ -1,12 +1,14 @@
 #!/bin/bash
 
-ask_user() {
+function ask_user() {
     read -p "$1 (y/n): " choice
     case "$choice" in
         y|Y ) return 0;;
         * ) return 1;;
     esac
 }
+
+sed -i "s|^TZ=.*$|TZ=$(cat /etc/timezone)|" src/.env
 
 if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
@@ -30,7 +32,7 @@ if ask_user "Install modules?"; then
 
     cd modules
 
-    install_mod() {
+    function install_mod() {
     local mod_name=$1
     local repo_url=$2
 
@@ -71,22 +73,22 @@ echo "$sql_dirs" | while read -r dir; do
     second_last_dir=$(basename "$(dirname "$dir")")
 
     if [[ "$last_dir" == *"char"* ]] || ([[ "$last_dir" == *"base"* ]] && [[ "$second_last_dir" == *"char"* ]]); then
-        echo "Copying SQL files to $destination_dir/db_characters"
+        echo "Copying SQL files to $chars"
         for file in $dir/*.sql; do
             if [[ ! -f "$chars/$(basename "$file")" ]]; then
                 cp "$file" "$chars"
             else
-                echo "File exists in $world, skipping $(basename "$file")"
+                echo "skipping $(basename "$file"), file exists in $chars."
             fi
         done
 
     elif [[ "$last_dir" == *"world"* ]] || ([[ "$last_dir" == *"base"* ]] && [[ "$second_last_dir" == *"world"* ]]); then
-        echo "Copying SQL files to $destination_dir/db_world"
+        echo "Copying SQL files to $world"
         for file in $dir/*.sql; do
             if [[ ! -f "$world/$(basename "$file")" ]]; then
                 cp "$file" "$world"
             else
-                echo "File exists in $world, skipping $(basename "$file")"
+                echo "skipping $(basename "$file"), file exists in $world."
             fi
         done
     fi
@@ -108,7 +110,7 @@ ip_address=$(hostname -I | awk '{print $1}')
 temp_sql_file="/tmp/temp_custom_sql.sql"
 
 # Function to execute SQL files with IP replacement
-execute_sql() {
+function execute_sql() {
     local db_name=$1
     local sql_files=("$custom_sql_dir/$db_name"/*.sql)
 
