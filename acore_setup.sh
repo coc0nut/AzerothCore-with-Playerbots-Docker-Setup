@@ -1,12 +1,14 @@
 #!/bin/bash
 
-func ask_user() {
+function ask_user() {
     read -p "$1 (y/n): " choice
     case "$choice" in
         y|Y ) return 0;;
         * ) return 1;;
     esac
 }
+
+sed -i "s|^TZ=.*$|TZ=$(cat /etc/timezone)|" src/.env
 
 if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
@@ -30,7 +32,7 @@ if ask_user "Install modules?"; then
 
     cd modules
 
-    func install_mod() {
+    function install_mod() {
     local mod_name=$1
     local repo_url=$2
 
@@ -108,7 +110,7 @@ ip_address=$(hostname -I | awk '{print $1}')
 temp_sql_file="/tmp/temp_custom_sql.sql"
 
 # Function to execute SQL files with IP replacement
-func execute_sql() {
+function execute_sql() {
     local db_name=$1
     local sql_files=("$custom_sql_dir/$db_name"/*.sql)
 
