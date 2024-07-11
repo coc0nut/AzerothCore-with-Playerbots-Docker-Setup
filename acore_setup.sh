@@ -8,8 +8,6 @@ ask_user() {
     esac
 }
 
-echo "TZ=$(cat /etc/timezone)" >> ./src/.env
-
 if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
