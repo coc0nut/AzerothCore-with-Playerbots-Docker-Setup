@@ -144,6 +144,7 @@ echo "1. Execute 'docker attach ac-worldserver'"
 echo "2. 'account create username password' creates an account."
 echo "3. 'account set gmlevel username 3 -1' sets the account as gm for all servers."
 echo "4. Ctrl+p Ctrl+q will take you out of the world console."
-echo "5. Now login to wow on $ip_address with 3.3.5a client!"
+echo "5. Edit your gameclients realmlist.wtf and set it to $ip_address."
+echo "6. Now login to wow with 3.3.5a client!"
 
 exit 0
