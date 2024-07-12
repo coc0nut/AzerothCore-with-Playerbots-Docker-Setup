@@ -21,8 +21,8 @@ Steps:
 
 1.
  ```bash
- git clone https://github.com/coc0nut/AzerothCore.git \
- && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
+git clone https://github.com/coc0nut/AzerothCore-with-Playerbots-Docker-Setup.git \
+&& cd AzerothCore-with-Playerbots-Docker-Setup && chmod +x *.sh && ./acore_setup.sh
  ```
 
 2. 
