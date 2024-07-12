@@ -47,7 +47,6 @@ if ask_user "Install modules?"; then
 
     install_mod "mod-aoe-loot" "https://github.com/azerothcore/mod-aoe-loot.git"
     install_mod "mod-learn-spells" "https://github.com/azerothcore/mod-learn-spells.git"
-    install_mod "mod-premium" "https://github.com/azerothcore/mod-premium.git"
     install_mod "mod-fireworks-on-level" "https://github.com/azerothcore/mod-fireworks-on-level.git"
 
     cd ..

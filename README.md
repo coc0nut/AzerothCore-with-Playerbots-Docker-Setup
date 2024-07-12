@@ -7,7 +7,6 @@ Includes:
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
 - [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
-- [mod-premium](https://github.com/azerothcore/mod-premium.git)
 - [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git)
 
 Prerequisits: 
