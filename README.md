@@ -22,7 +22,7 @@ Steps:
 1.
  ```bash
  git clone https://github.com/coc0nut/AzerothCore-with-Playerbots-Docker-Setup.git \
- && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
+ && cd AzerothCore-with-Playerbots-Docker-Setup.git && chmod +x *.sh && ./acore_setup.sh
  ```
 
 2. 
