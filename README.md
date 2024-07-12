@@ -21,7 +21,7 @@ Steps:
 
 1.
  ```bash
- git clone https://github.com/coc0nut/AzerothCore.git \
+ git clone https://github.com/coc0nut/AzerothCore-with-Playerbots-Docker-Setup.git \
  && cd AzerothCore && chmod +x *.sh && ./acore_setup.sh
  ```
 
