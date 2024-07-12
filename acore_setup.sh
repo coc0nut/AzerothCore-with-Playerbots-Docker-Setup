@@ -14,17 +14,23 @@ if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
     cd azerothcore-wotlk
+    if [ ! -d "wotlk" ]; then 
+        mkdir -p wotlk/etc
+    fi
 else
     if ask_user "Download and install AzerothCore Playerbots?"; then
-        git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
+        git clone <https://github.com/liyunfan1223/azerothcore-wotlk.git> --branch=Playerbot
         cp src/.env azerothcore-wotlk/
         cp src/*.yml azerothcore-wotlk/
         cd azerothcore-wotlk/modules
-        git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
+        git clone <https://github.com/liyunfan1223/mod-playerbots.git> --branch=master
         cd ..
+        if [ ! -d "wotlk" ]; then 
+            mkdir -p wotlk/etc
+        fi
     else
         echo "Aborting..."
-        exit 1    
+        exit 1
     fi
 fi
 
