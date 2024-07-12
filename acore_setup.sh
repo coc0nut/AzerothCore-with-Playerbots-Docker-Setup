@@ -51,9 +51,9 @@ if ask_user "Install modules?"; then
     fi
     }
 
-    install_mod "mod-aoe-loot" "<https://github.com/azerothcore/mod-aoe-loot.git>"
-    install_mod "mod-learn-spells" "<https://github.com/azerothcore/mod-learn-spells.git>"
-    install_mod "mod-fireworks-on-level" "<https://github.com/azerothcore/mod-fireworks-on-level.git>"
+    install_mod "mod-aoe-loot" "https://github.com/azerothcore/mod-aoe-loot.git"
+    install_mod "mod-learn-spells" "https://github.com/azerothcore/mod-learn-spells.git"
+    install_mod "mod-fireworks-on-level" "https://github.com/azerothcore/mod-fireworks-on-level.git"
 
     cd ..
 
