@@ -3,6 +3,8 @@
 Script installing AzerothCore with Playerbots on Docker
 
 Includes:
+- [MariaDB-Client (This is only client and will install only if you dont have the mysql command...)]()
+- [Docker](https://docker.com) (Will install if Docker is not installed.)
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
@@ -10,7 +12,7 @@ Includes:
 - [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git)
 
 Prerequisits: 
-  1. Debian 12/Ubuntu with Docker installed.
+  1. Debian 12. May work in ubuntu and other apt based distros...
 
 Reference:
 [Azeroth Core](https://www.azerothcore.org/wiki/home)
