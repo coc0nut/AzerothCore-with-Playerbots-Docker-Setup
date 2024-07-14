@@ -3,7 +3,7 @@
 Script installing AzerothCore with Playerbots on Docker
 
 Includes:
-- [MariaDB-Client (This is only client and will install only if you dont have the mysql command...)]()
+- [MariaDB-Client]() (This is only client and will install only if you dont have the mysql command...)
 - [Docker](https://docker.com) (Will install if Docker is not installed.)
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
