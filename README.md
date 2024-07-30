@@ -8,7 +8,7 @@ Includes:
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
-- [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
+- [mod-learn-spells](https://github.com/noisiver/mod-learn-spells)
 - [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git)
 - [mod-individual-progression](https://github.com/ZhengPeiRu21/mod-individual-progression.git)
 
@@ -20,7 +20,7 @@ Reference:
 
 ---
 
-Steps:
+### Steps:
 
 1.
  ```bash
@@ -56,13 +56,11 @@ To uninstall and start fresh, run `./uninstall.sh`
 
 To clear the `data/sql/custom` folders run `./clear_custom_sql.sh`
 
----
-
 ## Usage
 
 ### Update
 
-- To update and get the latest versions, you can run `uninstall.sh` without deleting the volumes and run `setup.sh` again.
+- To update and get the latest versions, you can run `./uninstall.sh` without deleting the volumes and run `./setup.sh` again.
 It will prompt you if you want to delete the volumes. (Dont let the warnings scare you :)
 
 - You can add modules to the `setup.sh` file by scrolling to the "install_mod" section and add the entries you'd like. **Or** you could do it manually by putting the modules folders into the `azerothcore-wotlk/modules`folder. `setup.sh` will automatically add the sql. See [How do I install modules?]("https://www.azerothcore.org/wiki/install-with-docker#how-do-i-install-modules") for more info.
