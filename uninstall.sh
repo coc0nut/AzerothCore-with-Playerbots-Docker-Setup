@@ -13,8 +13,8 @@ if ask_user "This will uninstall azerothcore, continue?"; then
     cd azerothcore-wotlk
 
     docker compose down
-
-    if ask_user "Delete volumes and cache? If you keep the volumes, a reinstall will only update."; then
+    docker image prune -a
+    if ask_user "Delete volumes? If you keep the volumes, a reinstall will only update."; then
         docker system prune -a
         docker volume rm azerothcore-wotlk_ac-client-data
         docker volume rm azerothcore-wotlk_ac-database
