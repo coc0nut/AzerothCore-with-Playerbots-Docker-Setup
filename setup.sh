@@ -42,7 +42,7 @@ then
     echo "::NOTE::"
     echo "Added your user to docker group to manage docker without root."
     echo "Log out and back in and rerun setup.sh."
-    exit 0;
+    exit 1;
 else
     echo "Docker is already installed."
 fi
