@@ -66,7 +66,6 @@ if [ -d "azerothcore-wotlk" ]; then
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
     cd azerothcore-wotlk
-    fi
 else
     if ask_user "Download and install AzerothCore Playerbots?"; then
         git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
