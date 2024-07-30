@@ -1,16 +1,34 @@
 # AzerothCore with Playerbots Docker setup (installscript)
-
+*************************************************************************************
+*   _____                              __  .__      _________                        *                         
+*  /  _  \ ________ ___________  _____/  |_|  |__   \_   ___ \  ___________   ____   *                         
+* /  /_\  \\___   // __ \_  __ \/  _ \   __\  |  \  /    \  \/ /  _ \_  __ \_/ __ \  *                         
+*/    |    \/    /\  ___/|  | \(  <_> )  | |   Y  \ \     \___(  <_> )  | \/\  ___/  *                         
+*\____|__  /_____ \\___  >__|   \____/|__| |___|  /  \______  /\____/|__|    \___  > *                         
+*        \/      \/    \/                       \/          \/                   \/  * 
+*                                                                                    ***************************
+* __      __            .__       .___         _____                                              _____  __    *
+*/  \    /  \___________|  |    __| _/   _____/ ____\ __  _  _______ _______   ________________ _/ ____\/  |_  *
+*\   \/\/   /  _ \_  __ \  |   / __ |   /  _ \   __\  \ \/ \/ /\__  \\_  __ \_/ ___\_  __ \__  \\   __\\   __\ *
+*\        (  <_> )  | \/  |__/ /_/ |  (  <_> )  |     \     /  / __ \|  | \/\  \___|  | \// __ \|  |   |  |    *
+* \__/\  / \____/|__|  |____/\____ |   \____/|__|      \/\_/  (____  /__|    \___  >__|  (____  /__|   |__|    *
+*      \/                         \/                               \/            \/           \/               *
+****************************************************************************************************************
+---
 Script installing AzerothCore with Playerbots on Docker
 
 Includes:
+- [MariaDB-Client]() (This is only client and will install only if you dont have the mysql command...)
+- [Docker](https://docker.com) (Will install if Docker is not installed.)
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
 - [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
 - [mod-learn-spells](https://github.com/azerothcore/mod-learn-spells)
 - [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git)
+- [mod-individual-progression](https://github.com/ZhengPeiRu21/mod-individual-progression.git)
 
 Prerequisits: 
-  1. Debian 12/Ubuntu with Docker installed.
+  1. Debian 12. May work in ubuntu and other apt based distros...
 
 Reference:
 [Azeroth Core](https://www.azerothcore.org/wiki/home)
@@ -44,11 +62,32 @@ AC> account set gmlevel username 3 -1
 ```
 
 4.
-Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you chose...
+Edit your wow_client_3.3.5a\Data\enUS\realmlist.wtf and type in the ip address you get in the end of installing...
 `set realmlist dockerhost_ip`
 
 **Change dockerhost_ip to the ip that the machine that runs the docker containers has.**
 
-To uninstall and start fresh, run `./acore_uninstall.sh`
+To uninstall and start fresh, run `./uninstall.sh`
 
-To clear the data/sql/custom folders run `./acore_clear_sql.sh`
+To clear the `data/sql/custom` folders run `./clear_custom_sql.sh`
+
+---
+
+## Usage
+
+### Update
+
+- To update and get the latest versions, you can run `uninstall.sh` without deleting the volumes and run `setup.sh` again.
+It will prompt you if you want to delete the volumes. (Dont let the warnings scare you :)
+
+- You can add modules to the `setup.sh` file by scrolling to the "install_mod" section and add the entries you'd like. **Or** you could do it manually by putting the modules folders into the `azerothcore-wotlk/modules`folder. `setup.sh` will automatically add the sql. See [How do I install modules?]("https://www.azerothcore.org/wiki/install-with-docker#how-do-i-install-modules") for more info.
+
+- Running `setup.sh` will not install anything over again unless you delete the modules folder or the `azerothcore-wotlk` folder before. You can run it if you only want to install new modules youve added, it will skip if you already downloaded the repos.
+
+- If you delete modules, remember to run `clear_custom_sql.sh` first and remove the respective tables in the db.
+
+### Backup & Recovery
+
+- You can backup and recover the databases by running `sqldump.sh`. It will place the backups in `sql_dumps` folder...
+
+---                                                                                                             

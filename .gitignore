@@ -1,1 +1,3 @@
 azerothcore-wotlk
+wotlk/etc
+sql_dumps/*/*.sql
