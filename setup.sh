@@ -38,18 +38,34 @@ then
       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo usermod -aG docker $USER
+    echo "::NOTE::"
+    echo "Added your user to docker group to manage docker without root."
+    echo "Log out and back in and rerun setup.sh."
+    exit 1;
 else
     echo "Docker is already installed."
 fi
 
 # Check if Azeroth Core is installed
 if [ -d "azerothcore-wotlk" ]; then
+    destination_dir="data/sql/custom"
+    
+    world=$destination_dir"/db_world/"
+    chars=$destination_dir"/db_characters/"
+    auth=$destination_dir"/db_auth/"
+    
+    cd azerothcore-wotlk
+    
+    rm -rf $world/*.sql
+    rm -rf $chars/*.sql
+    rm -rf $auth/*.sql
+    
+    cd ..
+    
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
     cd azerothcore-wotlk
-    if [ ! -d "wotlk" ]; then 
-        mkdir -p wotlk/etc
-    fi
 else
     if ask_user "Download and install AzerothCore Playerbots?"; then
         git clone https://github.com/liyunfan1223/azerothcore-wotlk.git --branch=Playerbot
@@ -58,9 +74,6 @@ else
         cd azerothcore-wotlk/modules
         git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master
         cd ..
-        if [ ! -d "wotlk" ]; then 
-            mkdir -p wotlk/etc
-        fi
     else
         echo "Aborting..."
         exit 1
@@ -85,8 +98,9 @@ if ask_user "Install modules?"; then
     }
 
     install_mod "mod-aoe-loot" "https://github.com/azerothcore/mod-aoe-loot.git"
-    install_mod "mod-learn-spells" "https://github.com/azerothcore/mod-learn-spells.git"
+    install_mod "mod-learn-spells" "https://github.com/noisiver/mod-learnspells.git"
     install_mod "mod-fireworks-on-level" "https://github.com/azerothcore/mod-fireworks-on-level.git"
+    install_mod "mod-individual-progression" "https://github.com/ZhengPeiRu21/mod-individual-progression.git"
 
     cd ..
 
@@ -135,6 +149,8 @@ done
 docker compose up -d --build
 
 cd ..
+echo "Copying etc folder to wotlk..."
+docker cp ac-worldserver:/azerothcore/env/dist/etc wotlk/
 
 # Directory for custom SQL files
 custom_sql_dir="src/sql"
