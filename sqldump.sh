@@ -16,11 +16,12 @@ function ask_user() {
         ;;
         backup|Backup )
         if [[ ! -d sql_dumps ]]; then
-            mkdir -p sql_dumps/acore_auth sql_dumps/acore_characters sql_dumps/acore_world sql_dumps/acore_playerbots    
-            mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_auth > ./sql_dumps/acore_auth/acore_auth-$(date +%F).sql
-            mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_characters > ./sql_dumps/acore_characters/acore_characters-$(date +%F).sql
-            mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_world > ./sql_dumps/acore_world/acore_world-$(date +%F).sql
-            mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_playerbots > ./sql_dumps/acore_playerbots/acore_playerbots-$(date +%F).sql
+            mkdir -p sql_dumps/acore_auth sql_dumps/acore_characters sql_dumps/acore_world sql_dumps/acore_playerbots
+        fi    
+        mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_auth > ./sql_dumps/acore_auth/acore_auth-$(date +%F).sql
+        mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_characters > ./sql_dumps/acore_characters/acore_characters-$(date +%F).sql
+        mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_world > ./sql_dumps/acore_world/acore_world-$(date +%F).sql
+        mysqldump -h127.0.0.1 -P3306 -uroot -p$password acore_playerbots > ./sql_dumps/acore_playerbots/acore_playerbots-$(date +%F).sql
         ;;
     esac
 }
