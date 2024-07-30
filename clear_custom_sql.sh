@@ -14,4 +14,3 @@ rm -rf $auth/*.sql
 
 cd ..
 
-exit 0;
