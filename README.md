@@ -7,10 +7,10 @@ Includes:
 - [Docker](https://docker.com) (Will install if Docker is not installed.)
 - [Azeroth Core - Playerbots branch](https://github.com/liyunfan1223/azerothcore-wotlk.git)
 - [mod-playerbots](https://github.com/liyunfan1223/mod-playerbots)
-- [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot)
-- [mod-learn-spells](https://github.com/noisiver/mod-learn-spells)
-- [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git)
-- [mod-individual-progression](https://github.com/ZhengPeiRu21/mod-individual-progression.git)
+- [mod-aoe-loot](https://github.com/azerothcore/mod-aoe-loot) (optional)
+- [mod-learn-spells](https://github.com/noisiver/mod-learn-spells) (optional)
+- [mod-fireworks-on-level](https://github.com/azerothcore/mod-fireworks-on-level.git) (optional)
+- [mod-individual-progression](https://github.com/ZhengPeiRu21/mod-individual-progression.git) (optional)
 
 Prerequisits: 
   1. Debian 12. May work in ubuntu and other apt based distros...
@@ -25,7 +25,7 @@ Reference:
 1.
  ```bash
  git clone https://github.com/coc0nut/AzerothCore-with-Playerbots-Docker-Setup.git \
- && cd AzerothCore-with-Playerbots-Docker-Setup && chmod +x *.sh && ./acore_setup.sh
+ && cd AzerothCore-with-Playerbots-Docker-Setup && chmod +x *.sh && ./setup.sh
  ```
 
 2. 
