@@ -13,7 +13,7 @@ Includes:
 - [mod-individual-progression](https://github.com/ZhengPeiRu21/mod-individual-progression.git) (optional)
 
 Prerequisits: 
-  1. Debian 12. May work in ubuntu and other apt based distros...
+  1. Debian 12 Bookworm
 
 Reference:
 [Azeroth Core](https://www.azerothcore.org/wiki/home)
