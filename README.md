@@ -1,5 +1,5 @@
 # AzerothCore with Playerbots Docker setup (installscript)
----
+
 Script installing AzerothCore with Playerbots on Docker
 
 Includes:
