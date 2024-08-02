@@ -151,6 +151,7 @@ docker compose up -d --build
 cd ..
 echo "Copying etc folder to wotlk..."
 docker cp ac-worldserver:/azerothcore/env/dist/etc wotlk/
+sudo chown -R $USER:$USER wotlk/   
 
 # Directory for custom SQL files
 custom_sql_dir="src/sql"

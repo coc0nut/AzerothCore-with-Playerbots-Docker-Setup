@@ -1,5 +1,5 @@
 # AzerothCore with Playerbots Docker setup (installscript)
----
+
 Script installing AzerothCore with Playerbots on Docker
 
 Includes:
@@ -13,7 +13,7 @@ Includes:
 - [mod-individual-progression](https://github.com/ZhengPeiRu21/mod-individual-progression.git) (optional)
 
 Prerequisits: 
-  1. Debian 12. May work in ubuntu and other apt based distros...
+  1. Debian 12 Bookworm
 
 Reference:
 [Azeroth Core](https://www.azerothcore.org/wiki/home)
@@ -63,7 +63,7 @@ To clear the `data/sql/custom` folders run `./clear_custom_sql.sh`
 - To update and get the latest versions, you can run `./uninstall.sh` without deleting the volumes and run `./setup.sh` again.
 It will prompt you if you want to delete the volumes. (Dont let the warnings scare you :)
 
-- You can add modules to the `setup.sh` file by scrolling to the "install_mod" section and add the entries you'd like. **Or** you could do it manually by putting the modules folders into the `azerothcore-wotlk/modules`folder. `setup.sh` will automatically add the sql. See [How do I install modules?]("https://www.azerothcore.org/wiki/install-with-docker#how-do-i-install-modules") for more info.
+- You can add modules to the `setup.sh` file by scrolling to the "install_mod" section and add the entries you'd like. **Or** you could do it manually by putting the modules folders into the `azerothcore-wotlk/modules`folder. `setup.sh` will automatically add the sql. See [How do I install modules?](https://www.azerothcore.org/wiki/install-with-docker#how-do-i-install-modules) for more info.
 
 - Running `setup.sh` will not install anything over again unless you delete a modules folder or the `azerothcore-wotlk` folder before. You can run it if you only want to install new modules youve added, it will skip if you already downloaded the repos.
 
