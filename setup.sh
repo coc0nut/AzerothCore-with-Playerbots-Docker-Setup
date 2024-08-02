@@ -10,7 +10,59 @@ function ask_user() {
 
 sed -i "s|^TZ=.*$|TZ=$(cat /etc/timezone)|" src/.env
 
+sudo apt update
+
+# Check if MySQL client is installed
+if ! command -v mysql &> /dev/null
+then
+    echo "MySQL client is not installed. Installing mariadb-client now..."
+    sudo apt install -y mariadb-client
+else
+    echo "MySQL client is already installed."
+fi
+
+# Check if Docker is installed
+if ! command -v docker &> /dev/null
+then
+    echo "Docker is not installed. Installing Docker now..."
+    # Add Docker's official GPG key:
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo usermod -aG docker $USER
+    echo "::NOTE::"
+    echo "Added your user to docker group to manage docker without root."
+    echo "Log out and back in and rerun setup.sh."
+    exit 1;
+else
+    echo "Docker is already installed."
+fi
+
+# Check if Azeroth Core is installed
 if [ -d "azerothcore-wotlk" ]; then
+    destination_dir="data/sql/custom"
+    
+    world=$destination_dir"/db_world/"
+    chars=$destination_dir"/db_characters/"
+    auth=$destination_dir"/db_auth/"
+    
+    cd azerothcore-wotlk
+    
+    rm -rf $world/*.sql
+    rm -rf $chars/*.sql
+    rm -rf $auth/*.sql
+    
+    cd ..
+    
     cp src/.env azerothcore-wotlk/
     cp src/*.yml azerothcore-wotlk/
     cd azerothcore-wotlk
@@ -24,7 +76,7 @@ else
         cd ..
     else
         echo "Aborting..."
-        exit 1    
+        exit 1
     fi
 fi
 
@@ -46,9 +98,9 @@ if ask_user "Install modules?"; then
     }
 
     install_mod "mod-aoe-loot" "https://github.com/azerothcore/mod-aoe-loot.git"
-    install_mod "mod-learn-spells" "https://github.com/azerothcore/mod-learn-spells.git"
-    install_mod "mod-premium" "https://github.com/azerothcore/mod-premium.git"
+    install_mod "mod-learn-spells" "https://github.com/noisiver/mod-learnspells.git"
     install_mod "mod-fireworks-on-level" "https://github.com/azerothcore/mod-fireworks-on-level.git"
+    install_mod "mod-individual-progression" "https://github.com/ZhengPeiRu21/mod-individual-progression.git"
 
     cd ..
 
@@ -97,6 +149,9 @@ done
 docker compose up -d --build
 
 cd ..
+echo "Copying etc folder to wotlk..."
+docker cp ac-worldserver:/azerothcore/env/dist/etc wotlk/
+sudo chown -R $USER:$USER wotlk/   
 
 # Directory for custom SQL files
 custom_sql_dir="src/sql"
@@ -146,6 +201,7 @@ echo "1. Execute 'docker attach ac-worldserver'"
 echo "2. 'account create username password' creates an account."
 echo "3. 'account set gmlevel username 3 -1' sets the account as gm for all servers."
 echo "4. Ctrl+p Ctrl+q will take you out of the world console."
-echo "5. Now login to wow on $ip_address with 3.3.5a client!"
+echo "5. Edit your gameclients realmlist.wtf and set it to $ip_address."
+echo "6. Now login to wow with 3.3.5a client!"
 
 exit 0
