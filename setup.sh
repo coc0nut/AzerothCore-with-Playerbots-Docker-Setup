@@ -110,9 +110,10 @@ fi
 docker compose up -d --build
 
 cd ..
+mkdir wotlk
+sudo chown -R 1000:1000 wotlk
 echo "Copying etc folder to wotlk..."
 docker cp ac-worldserver:/azerothcore/env/dist/etc wotlk/
-sudo chown -R 1000:1000 wotlk
 
 # Directory for custom SQL files
 custom_sql_dir="src/sql"
@@ -164,5 +165,6 @@ echo "3. 'account set gmlevel username 3 -1' sets the account as gm for all serv
 echo "4. Ctrl+p Ctrl+q will take you out of the world console."
 echo "5. Edit your gameclients realmlist.wtf and set it to $ip_address."
 echo "6. Now login to wow with 3.3.5a client!"
-echo "7. All config files are copied into the wotlk folder created with setup.sh.
+echo "7. All config files are copied into the wotlk folder created with setup.sh."
+echo "8. If ac-db-import failed, run 'sudo chown -R 1000:1000 wotlk' and './setup.sh' again!"
 
