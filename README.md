@@ -1,6 +1,7 @@
 # AzerothCore with Playerbots Docker setup (installscript)
 
 Script installing AzerothCore with Playerbots on Docker
+This is not a fork! Its just scripts to manage the game.
 
 Includes:
 - [MariaDB-Client]() (This is only client and will install only if you dont have the mysql command...)
@@ -14,6 +15,7 @@ Includes:
 
 Prerequisits: 
   1. Debian 12 Bookworm
+
 
 Reference:
 [Azeroth Core](https://www.azerothcore.org/wiki/home)
