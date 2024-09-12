@@ -20,7 +20,7 @@ if ask_user "This will uninstall azerothcore, continue?"; then
         docker volume rm azerothcore-wotlk_ac-database
     fi
     
-    cd .. && rm -rf azerothcore-wotlk
+    cd .. && rm -rf azerothcore-wotlk wotlk/*
 
     exit 0
 fi
