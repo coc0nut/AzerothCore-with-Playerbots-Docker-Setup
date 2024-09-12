@@ -23,6 +23,7 @@ Reference:
 ### Steps:
 
 1.
+> Be sure to set correct timezone on your debian before you start.
  ```bash
  git clone https://github.com/coc0nut/AzerothCore-with-Playerbots-Docker-Setup.git \
  && cd AzerothCore-with-Playerbots-Docker-Setup && chmod +x *.sh && ./setup.sh
@@ -37,6 +38,7 @@ NOTE:
 3. 'account set gmlevel username 3 -1' sets the account as gm for all servers.
 4. Ctrl+p Ctrl+q will take you out of the world console.
 5. Now login to wow on $(hostname -I | awk '{print $1}') with 3.3.5a client!
+6. All the configs for the server and modules is copied to a folder named wotlk. This is where you edit playerbots and server configuration.
 ```
 See [Azeroth Core - Docker setup](https://www.azerothcore.org/wiki/install-with-docker) for more info.
 

@@ -106,52 +106,12 @@ if ask_user "Install modules?"; then
 
 fi
 
-base_dir="modules"
-destination_dir="data/sql/custom"
-
-world=$destination_dir"/db_world/"
-chars=$destination_dir"/db_characters/"
-auth=$destination_dir"/db_auth/"
-
-sql_dirs=$(find $base_dir -type f -name "*.sql" -exec dirname {} \; | sort -u)
-
-echo "Found SQL directories:"
-echo "$sql_dirs"
-
-echo "$sql_dirs" | while read -r dir; do
-    echo "Processing directory: $dir"
-
-    last_dir=$(basename "$dir")
-    second_last_dir=$(basename "$(dirname "$dir")")
-
-    if [[ "$last_dir" == *"char"* ]] || ([[ "$last_dir" == *"base"* ]] && [[ "$second_last_dir" == *"char"* ]]); then
-        echo "Copying SQL files to $chars"
-        for file in $dir/*.sql; do
-            if [[ ! -f "$chars/$(basename "$file")" ]]; then
-                cp "$file" "$chars"
-            else
-                echo "skipping $(basename "$file"), file exists in $chars."
-            fi
-        done
-
-    elif [[ "$last_dir" == *"world"* ]] || ([[ "$last_dir" == *"base"* ]] && [[ "$second_last_dir" == *"world"* ]]); then
-        echo "Copying SQL files to $world"
-        for file in $dir/*.sql; do
-            if [[ ! -f "$world/$(basename "$file")" ]]; then
-                cp "$file" "$world"
-            else
-                echo "skipping $(basename "$file"), file exists in $world."
-            fi
-        done
-    fi
-done
 
 docker compose up -d --build
 
 cd ..
 echo "Copying etc folder to wotlk..."
 docker cp ac-worldserver:/azerothcore/env/dist/etc wotlk/
-sudo chown -R $USER:$USER wotlk/   
 
 # Directory for custom SQL files
 custom_sql_dir="src/sql"
@@ -203,5 +163,5 @@ echo "3. 'account set gmlevel username 3 -1' sets the account as gm for all serv
 echo "4. Ctrl+p Ctrl+q will take you out of the world console."
 echo "5. Edit your gameclients realmlist.wtf and set it to $ip_address."
 echo "6. Now login to wow with 3.3.5a client!"
+echo "7. All config files are copied into the wotlk folder created with setup.sh.
 
-exit 0

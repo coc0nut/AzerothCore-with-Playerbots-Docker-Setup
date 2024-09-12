@@ -1,10 +1,10 @@
 #!/bin/bash
 
-destination_dir="data/sql/custom"
+destination_dir="azerothcore-wotlk/data/sql/custom"
 
-world=$destination_dir"/db_world/"
-chars=$destination_dir"/db_characters/"
-auth=$destination_dir"/db_auth/"
+world=$destination_dir"/db_world"
+chars=$destination_dir"/db_characters"
+auth=$destination_dir"/db_auth"
 
 cd azerothcore-wotlk
 
