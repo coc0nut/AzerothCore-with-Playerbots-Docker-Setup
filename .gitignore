@@ -1,4 +1,4 @@
 azerothcore-wotlk
-wotlk/etc
+wotlk/*
 sql_dumps/*/*.sql
 sql_dumps/*/*.*filepart
