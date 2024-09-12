@@ -1,6 +1,7 @@
 # AzerothCore with Playerbots Docker setup (installscript)
 
 Script installing AzerothCore with Playerbots on Docker
+
 This is not a fork! Its just scripts to manage the game.
 
 Includes:
