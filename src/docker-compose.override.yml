@@ -7,5 +7,4 @@ services:
     environment:
       TZ: ${TZ}
     volumes:
-      - ./modules:/azerothcore/modules
-      - ../wotlk/etc:/azerothcore/env/dist/etc
+      - ./modules:/azerothcore/modules:rw
